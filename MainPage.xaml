@@ -7,7 +7,7 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
+            <!--<Image
                 Source="dotnet_bot.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
@@ -22,9 +22,10 @@
                 Text="Welcome to &#10;.NET Multi-platform App UI"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />-->
             <Entry x:Name="NameEntry" Placeholder="Enter the Hotel Name Here.."/>
             <Entry x:Name="DescriptionEntry" Placeholder="Enter Description.."/>
+            
             <Button
                 x:Name="Save"
                 Text="Save" 
@@ -43,6 +44,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.RowSpan="2" 
@@ -63,7 +65,23 @@
                         Grid.Column="1" 
                         Text="{Binding Description}" />
 
+                           
+
+                            <Button 
+                                     x:Name="Delete"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="3"
+                                    Text="Delete"
+                                    HorizontalOptions="EndAndExpand"
+                                    Command="{Binding Path=BindingContext.Name, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                    CommandParameter="{Binding Name}"
+                                    Clicked="OnDelete"
+                                    BackgroundColor="Blue"
+                                    HeightRequest="40"
+                                    WidthRequest="100" />
                         </Grid>
+
+                        
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

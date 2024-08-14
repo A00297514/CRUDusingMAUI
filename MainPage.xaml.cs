@@ -47,6 +47,19 @@ namespace AuthenticationApp
             NameEntry.Text = string.Empty;
             DescriptionEntry.Text = string.Empty;
         }
+        
+
+        private  void OnDelete(object sender, EventArgs e)
+        {
+            var itemToDelete = (Hotel)((Button)sender).BindingContext;
+            
+
+            MyHotelList.Remove(itemToDelete);
+
+             _firebaseClient.Child("Hotel")
+                .Child(itemToDelete.ToString())
+                .DeleteAsync();
+        }
     }
 
 }
